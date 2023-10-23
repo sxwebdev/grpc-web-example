@@ -1,0 +1,37 @@
+version: "3.9"
+
+networks:
+  grpc_net:
+    driver: bridge
+    name: grpc_net
+
+services:
+  frontend:
+    image: grpc-web-frontend
+    build:
+      context: ./frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  backend:
+    image: grpc-web-backend
+    build:
+      context: ./backend
+    networks:
+      - grpc_net
+    ports:
+      - 9000:9000
+    depends_on:
+      - envoy
+
+  envoy:
+    image: grpc-envoy
+    build:
+      context: ./deployment/envoy
+      dockerfile: Dockerfile
+    networks:
+      - grpc_net
+    ports:
+      - 8080:8080
