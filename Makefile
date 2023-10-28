@@ -1,6 +1,6 @@
 current_dir = $(shell pwd)
 
-PATH  := $(PATH):$(PWD)/bin:$(current_dir)/frontend/node_modules/@protobuf-ts/plugin/bin
+PATH := $(PATH):$(PWD)/bin:$(current_dir)/frontend/node_modules/@protobuf-ts/plugin/bin
 
 genproto:
 	rm -rf $(current_dir)/backend/pb/*
@@ -10,10 +10,11 @@ genproto:
 	--go-grpc_out=:$(current_dir)/backend/pb \
 	--ts_out $(current_dir)/frontend/src/api/proto \
 	--ts_opt generate_dependencies \
-	hello.proto
+	example.proto
 	npx prettier --write --log-level=error $(current_dir)/frontend/src/api/proto/*
 
 start:
+	docker compose build --no-cache
 	docker compose up -d
 	open http://localhost:3000
 

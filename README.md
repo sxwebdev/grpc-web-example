@@ -2,6 +2,8 @@
 
 This repository contains an example of using grpc-web with a backend written in golang.
 
+![Preview](https://github.com/sxwebdev/grpc-web-example/blob/master/preview.png?raw=true)
+
 ## Tech stack
 
 - Backend: `Golang`

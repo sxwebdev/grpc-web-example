@@ -50,7 +50,7 @@ const FormData: React.FC<FormProps & { formTitle: string }> = observer(
 const Forms: React.FC = () => {
   const helloFormInstance = getFormInstance(helloForm, {});
 
-  return <FormData formTitle="Hello form" instance={helloFormInstance} />;
+  return <FormData formTitle="RPC form example" instance={helloFormInstance} />;
 };
 
 export default Forms;

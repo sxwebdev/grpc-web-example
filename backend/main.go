@@ -21,12 +21,12 @@ func main() {
 	)
 
 	// grpc servers
-	helloServer := api.NewHelloServer()
+	grpcWebServer := api.NewGrpcWebServer(ln.Context(), logger)
 
 	// grpc instance
 	grpcServer := grpc_transport.NewServer(
 		grpc_transport.WithLogger(logger),
-		grpc_transport.WithServices(helloServer),
+		grpc_transport.WithServices(grpcWebServer),
 	)
 
 	ln.ServicesRunner().Register(

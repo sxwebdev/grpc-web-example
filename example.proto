@@ -1,0 +1,25 @@
+syntax = "proto3";
+package hello;
+
+option go_package = ".;pb";
+
+import "google/protobuf/timestamp.proto";
+
+/* RPC */
+message RpcRequest { string text = 1; }
+message RpcResponse {
+  string response = 1;
+  google.protobuf.Timestamp date = 11;
+}
+
+/* Stream */
+message StreamRequest {}
+message StreamResponse {
+  int32 rand_integer = 1;
+  google.protobuf.Timestamp date = 2;
+}
+
+service Service {
+  rpc Rpc(RpcRequest) returns (RpcResponse) {};
+  rpc Stream(StreamRequest) returns (stream StreamResponse) {}
+}

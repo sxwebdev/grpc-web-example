@@ -1,4 +1,4 @@
-import Hello, { IHello } from "./hello";
+import Hello, { IHello } from "./grpc";
 
 interface IAPI {
   Hello: IHello;
